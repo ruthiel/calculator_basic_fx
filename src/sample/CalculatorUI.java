@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,6 +16,9 @@ import javafx.stage.Stage;
  */
 public class CalculatorUI {
 
+    private final int BUTTON_SIZE = 50;
+    private EventHandler<ActionEvent> handler;
+
     public void setHandler(Controller controller) {
 
     }
@@ -22,13 +27,20 @@ public class CalculatorUI {
     public void start(Stage primaryStage) throws Exception {
 
         GridPane pane = new GridPane();
+        pane.setAlignment(Pos.CENTER);
         pane.setPadding(new Insets(10, 10, 10, 10));
 
 
-        Scene scene = new Scene(pane);
+
+        Scene scene = new Scene(pane, 600, 600);
+
 
         Label display = new Label();
-        pane.add(display, 0, 0, 4, 2);
+        display.setId("display");
+        display.setText("0");
+        display.setAlignment(Pos.CENTER);
+        display.setPrefSize(BUTTON_SIZE * 4, BUTTON_SIZE * 2);
+        pane.add(display, 0, 0, 4, 1);
 
         String[][] matrix = {
                 {"7", "8", "9", "/"},
@@ -44,9 +56,15 @@ public class CalculatorUI {
 
                 Button button = new Button();
                 button.setText(matrix[i][j]);
-                button.setPrefSize(50, 50);
-                pane.add(button, j, i);
+                button.setOnAction(handler);
+                button.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+
+                pane.add(button, j, i + 1);
+
+                button.setId(matrix[i][j]);
+
                 buttons[i][j] = button;
+
             }
 
         }
@@ -57,5 +75,10 @@ public class CalculatorUI {
         primaryStage.show();
 
 
+    }
+
+
+    public void addNumber(String id) {
+        
     }
 }

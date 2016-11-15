@@ -1,7 +1,13 @@
 package sample;
 
-public class Controller {
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 
+public class Controller implements EventHandler{
+
+    private CalculatorBrain brain;
+    private CalculatorUI ui;
 
     public void setBrain(CalculatorBrain brain) {
 
@@ -11,4 +17,14 @@ public class Controller {
 
     }
 
+    @Override
+    public void handle(Event event) {
+
+        String id = ((Button) event.getSource()).getId();
+        ui.addNumber(id);
+
+        
+
+
+    }
 }
