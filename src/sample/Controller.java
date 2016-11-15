@@ -23,7 +23,20 @@ public class Controller implements EventHandler{
         String id = ((Button) event.getSource()).getId();
         ui.addNumber(id);
 
-        
+        switch (id) {
+            case "+":
+                break;
+            case "-":
+                break;
+            case "*":
+                break;
+            case "/":
+                break;
+            case "AC":
+                break;
+            case "=":
+                break;
+        }
 
 
     }

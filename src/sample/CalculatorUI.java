@@ -19,9 +19,7 @@ public class CalculatorUI {
     private final int BUTTON_SIZE = 50;
     private EventHandler<ActionEvent> handler;
 
-    public void setHandler(Controller controller) {
 
-    }
 
 
     public void start(Stage primaryStage) throws Exception {
@@ -77,8 +75,12 @@ public class CalculatorUI {
 
     }
 
+    public void setHandler(Controller controller) {
+
+    }
 
     public void addNumber(String id) {
-        
+
     }
+
 }
