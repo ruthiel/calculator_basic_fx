@@ -27,10 +27,11 @@ public class CalculatorUI {
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
         pane.setPadding(new Insets(10, 10, 10, 10));
+        pane.getStylesheets().add("style.css");
 
 
 
-        Scene scene = new Scene(pane, 600, 600);
+        Scene scene = new Scene(pane);
 
 
         Label display = new Label();
@@ -63,9 +64,15 @@ public class CalculatorUI {
 
                 buttons[i][j] = button;
 
+                if ( buttons[i][j].getText().matches("\\D")) {
+                    buttons[i][j].getStyleClass().add("non-digitButtons");
+                }
             }
 
         }
+
+        Button buttonOperations = new Button();
+        buttonOperations.getStyleClass().add("b");
 
 
         primaryStage.setTitle("Basic Calculator");
